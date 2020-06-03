@@ -11,7 +11,7 @@ if ( isset($_POST['email']) && isset($_POST['name']) && isset($_POST['subject'])
     }
   }
 
-$headers = 'From: ' . $_POST["name"] . '<' . $_POST["email"] . '>' . "\r\n" .
+$headers = 'From: contact@alimentation.com ' . $_POST["New form"] . '<' . $_POST["email"] . '>' . "\r\n" .
     'Reply-To: ' . $_POST["email"] . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
