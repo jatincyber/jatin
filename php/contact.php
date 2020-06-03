@@ -1,24 +1,38 @@
 <?php
-// Email Submit
-// Note: filter_var() requires PHP >= 5.2.0
-if ( isset($_POST['email']) && isset($_POST['name']) && isset($_POST['subject']) && isset($_POST['mobile number']) && isset($_POST['message']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) ) {
 
-  // detect & prevent header injections
-  $test = "/(content-type|bcc:|cc:|to:)/i";
-  foreach ( $_POST as $key => $val ) {
-    if ( preg_match( $test, $val ) ) {
-      exit;
-    }
-  }
+$name = $_REQUEST['name'];
+$email = $_REQUEST['email'];
+$number = $_REQUEST['number'];
+$subject = $_REQUEST['subject'];
+$message = $_REQUEST['message'];
 
-$headers = 'From: contact@alimentation.com ' . $_POST["New form"] . '<' . $_POST["email"] . '>' . "\r\n" .
-    'Reply-To: ' . $_POST["email"] . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
+//check input
 
-  //
-  mail( "alimentationequillibree@gmail.com", $_POST['subject'], $_POST['message'],  $headers );
+if ((empty($name) ||  empty($email) ||  empty($number)  ||  empty($subject))  ||  empty($message)  )
 
-  //      ^
-  //  Replace with your email 
+{
+    echo "Please fill all the feilds";
+
 }
+
+else
+
+{
+mail("alimentationequillibree@gmail.com ", "form", $message , "From: $name
+    <$email> <$number>  ") ;
+
+    echo "<script type='text/javascript'>alert('your message sent successfully') ;
+    window.history.log(-1);
+
+
+
+
+    </script>"           ;
+
+}
+
+
+
+
+
 ?>
